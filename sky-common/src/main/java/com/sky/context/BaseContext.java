@@ -2,7 +2,8 @@ package com.sky.context;
 
 public class BaseContext {
 
-    public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+
+    public static ThreadLocal<Long> threadLocal = new ThreadLocal<Long>();
 
     public static void setCurrentId(Long id) {
         threadLocal.set(id);
