@@ -10,4 +10,30 @@
         </foreach>
     </select>
         
+    <insert id="insertBatch">
+        insert into setmeal_dish (setmeal_id, dish_id,name,price,copies)
+        values
+        <foreach item="setmealDish" collection="setmealDishes" separator=",">
+            (#{setmealDish.setmealId}, #{setmealDish.dishId}, #{setmealDish.name}, #{setmealDish.price}, #{setmealDish.copies})
+        </foreach>
+    </insert>
+
+    <delete id="deleteBySetmealIds">
+        delete from setmeal_dish where setmeal_id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="getSetmealDishesBySetmealId" resultType="com.sky.entity.SetmealDish">
+        select sd.id, sd.setmeal_id, sd.dish_id, d.name, sd.price, sd.copies
+        from setmeal_dish sd
+        join dish d on sd.dish_id = d.id
+        where sd.setmeal_id = #{id}
+    </select>
+
+    <delete id="deleteBySetmealId">
+        delete from setmeal_dish where setmeal_id = #{setmealId}
+    </delete>
+
 </mapper>
