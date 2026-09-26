@@ -52,5 +52,5 @@ sky:
 #    access-key-secret: ${sky.alioss.access-key-secret}
 #    bucket-name: ${sky.alioss.bucket-name}
   wechat:
-    appid: wx7e5213a43c8ec66b
-    secret: 69a9325f7d3e95351f6ec1a614cf5de1
+    appid: ${sky.wechat.appid}
+    secret: ${sky.wechat.secret}
